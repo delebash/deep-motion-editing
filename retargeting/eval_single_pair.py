@@ -52,8 +52,10 @@ def main():
     # argsparse can't take space character as part of the argument
     args.input_bvh = recover_space(args.input_bvh)
     args.target_bvh = recover_space(args.target_bvh)
-    args.output_filename = recover_space(args.output_filename)
-
+    
+    # Windows 10 fix
+    # args.output_filename = recover_space(args.output_filename) -- recover_space removes underline in 'examples/intra_structure' and replaces it with a space 'examples/iintra structure' resulting in bad path 
+    args.output_filename = args.output_filename
     character_names, file_id, src_id = eval_prepare(args)
     input_character_name = args.input_bvh.split('/')[-2]
     output_character_name = args.target_bvh.split('/')[-2]

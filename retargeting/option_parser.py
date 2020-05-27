@@ -69,4 +69,6 @@ def get_std_bvh(args=None, dataset=None):
 def try_mkdir(path):
     import os
     if not os.path.exists(path):
-        os.system('mkdir -p {}'.format(path))
+        # Windows 10 fix
+        # os.system('mkdir -p {}'.format(path))  -- does not work in windows 10 fails to make directory
+        os.makedirs(path)
